@@ -59,6 +59,8 @@ namespace KhachSan.All_User_Control
             this.btnAllotCustomer = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtNumDays = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -436,7 +438,7 @@ namespace KhachSan.All_User_Control
             this.btnAllotCustomer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnAllotCustomer.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAllotCustomer.ForeColor = System.Drawing.Color.Black;
-            this.btnAllotCustomer.Location = new System.Drawing.Point(1659, 763);
+            this.btnAllotCustomer.Location = new System.Drawing.Point(1677, 901);
             this.btnAllotCustomer.Name = "btnAllotCustomer";
             this.btnAllotCustomer.Size = new System.Drawing.Size(251, 80);
             this.btnAllotCustomer.TabIndex = 32;
@@ -463,10 +465,44 @@ namespace KhachSan.All_User_Control
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label14.Location = new System.Drawing.Point(1429, 728);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(151, 32);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "Số ngày ở";
+            // 
+            // txtNumDays
+            // 
+            this.txtNumDays.BorderRadius = 18;
+            this.txtNumDays.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNumDays.DefaultText = "";
+            this.txtNumDays.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtNumDays.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtNumDays.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNumDays.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNumDays.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNumDays.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtNumDays.ForeColor = System.Drawing.Color.Black;
+            this.txtNumDays.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNumDays.Location = new System.Drawing.Point(1424, 788);
+            this.txtNumDays.Name = "txtNumDays";
+            this.txtNumDays.PasswordChar = '\0';
+            this.txtNumDays.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtNumDays.PlaceholderText = "Nhập địa chỉ";
+            this.txtNumDays.SelectedText = "";
+            this.txtNumDays.Size = new System.Drawing.Size(554, 63);
+            this.txtNumDays.TabIndex = 36;
+            // 
             // UC_CustomerRes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtNumDays);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.guna2PictureBox1);
             this.Controls.Add(this.btnAllotCustomer);
             this.Controls.Add(this.txtPrice);
@@ -534,5 +570,7 @@ namespace KhachSan.All_User_Control
         private Guna.UI2.WinForms.Guna2Button btnAllotCustomer;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private System.Windows.Forms.Label label14;
+        private Guna.UI2.WinForms.Guna2TextBox txtNumDays;
     }
 }

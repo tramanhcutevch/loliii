@@ -85,6 +85,20 @@ namespace KhachSan.All_User_Control
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            
+        }
+        private void UC_Employee_Leave(object sender, EventArgs e)
+        {
+            clearAll();
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
             if (txtID.Text != "")
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa không?", "Xác Nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -95,12 +109,8 @@ namespace KhachSan.All_User_Control
                 }
             }
         }
-        private void UC_Employee_Leave(object sender, EventArgs e)
-        {
-            clearAll();
-        }
 
-        private void tabPage3_Click(object sender, EventArgs e)
+        private void tabPage1_Click(object sender, EventArgs e)
         {
 
         }

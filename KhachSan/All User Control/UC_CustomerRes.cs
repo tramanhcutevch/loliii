@@ -70,7 +70,7 @@ namespace KhachSan.All_User_Control
 
         private void btnAllotCustomer_Click(object sender, EventArgs e)
         {
-            if (txtName.Text != "" && txtContact.Text != "" && txtNationality.Text != "" && txtGender.Text != "" && txtDob.Text != "" && txtIDProof.Text != "" && txtAddress.Text != "" && txtCheckin.Text != "" && txtPrice.Text != "")
+            if (txtName.Text != "" && txtContact.Text != "" && txtNationality.Text != "" && txtGender.Text != "" && txtDob.Text != "" && txtIDProof.Text != "" && txtAddress.Text != "" && txtCheckin.Text != "" && txtPrice.Text != "" && txtNumDays.Text != "")
             {
                 String name = txtName.Text;
                 Int64 mobile = Int64.Parse(txtContact.Text);
@@ -80,23 +80,24 @@ namespace KhachSan.All_User_Control
                 String idproof = txtIDProof.Text;
                 String address = txtAddress.Text;
                 String checkin = txtCheckin.Text;
+                int numDays = Int32.Parse(txtNumDays.Text);
+                Int64 pricePerDay = Int64.Parse(txtPrice.Text);
+                Int64 totalPrice = numDays * pricePerDay;
 
-                NewMethod(name, mobile, national, gender, dob, idproof, address, checkin);
+                query = "insert into customer (cname, mobile, nationality, gender, dob, idproof, address, checkin, roomid, numDays, totalPrice) values ('" + name + "','" + mobile + "','" + national + "','" + gender + "','" + dob + "','" + idproof + "','" + address + "','" + checkin + "'," + rid + "," + numDays + "," + totalPrice +   ") update rooms set booked = 'YES' where roomNo ='" + txtRoomNo.Text + "'";
                 fn.setData(query, " Số Phòng " + txtRoomNo.Text + " Đăng kí thành công ");
                 clearAll();
-
             }
             else
             {
                 MessageBox.Show("Xin vui lòng điền đầy đủ thông tin .", "Thông Tin ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
 
         }
 
-        private void NewMethod(string name, long mobile, string national, string gender, string dob, string idproof, string address, string checkin)
+        private void NewMethod(string name, long mobile, string national, string gender, string dob, string idproof, string address, string checkin, int numDays)
         {
-            query = "insert into customer (cname, mobile, nationality, gender, dob, idproof, address, checkin, roomid) values ('" + name + "','" + mobile + "','" + national + "','" + gender + "','" + dob + "','" + idproof + "','" + address + "','" + checkin + "'," + rid + ") update rooms set booked = 'YES' where roomNo ='" + txtRoomNo.Text + "'";
+            query = "insert into customer (cname, mobile, nationality, gender, dob, idproof, address, checkin, roomid, numDays) values ('" + name + "','" + mobile + "','" + national + "','" + gender + "','" + dob + "','" + idproof + "','" + address + "','" + checkin +  "," + numDays +  "'," + rid + ") update rooms set booked = 'YES' where roomNo ='" + txtRoomNo.Text + "'";
         }
 
         public void clearAll()
@@ -113,12 +114,18 @@ namespace KhachSan.All_User_Control
             txtRoom.SelectedIndex = -1;
             txtRoomNo.Items.Clear();
             txtPrice.Clear();
-
+            txtNumDays.Clear(); 
         }
+
 
         private void UC_CustomerRes_Leave(object sender, EventArgs e)
         {
             clearAll();
+
+        }
+
+        private void txtNumDays_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

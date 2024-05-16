@@ -23,18 +23,18 @@ namespace KhachSan.All_User_Control
         {
             if (txtSearchBy.SelectedIndex == 0)
             {
-                query = "select customer.cid , customer.cname, customer.mobile, customer.nationality, customer.gender, customer.dob, customer.idproof, customer.address, customer.checkin, rooms.roomNo, rooms.roomType, rooms.bed, rooms.price from customer inner join rooms on customer.roomid = rooms.roomid ";
+                query = "select customer.cid , customer.cname, customer.mobile, customer.nationality, customer.gender, customer.dob, customer.idproof, customer.address, customer.checkin, rooms.roomNo, rooms.roomType, rooms.bed, rooms.price , customer.numDays, customer.totalPrice from customer inner join rooms on customer.roomid = rooms.roomid ";
                 getRecord(query);
 
             }
             else if (txtSearchBy.SelectedIndex == 1)
             {
-                query = "select customer.cid , customer.cname, customer.mobile, customer.nationality, customer.gender, customer.dob, customer.idproof, customer.address, customer.checkin, rooms.roomNo, rooms.roomType, rooms.bed, rooms.price from customer inner join rooms on customer.roomid = rooms.roomid where checkout is null ";
+                query = "select customer.cid , customer.cname, customer.mobile, customer.nationality, customer.gender, customer.dob, customer.idproof, customer.address, customer.checkin, rooms.roomNo, rooms.roomType, rooms.bed, rooms.price,customer.numDays, customer.totalPrice  from customer inner join rooms on customer.roomid = rooms.roomid where checkout is null ";
                 getRecord(query);
             }
             else if (txtSearchBy.SelectedIndex == 2)
             {
-                query = "select customer.cid , customer.cname, customer.mobile, customer.nationality, customer.gender, customer.dob, customer.idproof, customer.address, customer.checkin, rooms.roomNo, rooms.roomType, rooms.bed, rooms.price from customer inner join rooms on customer.roomid = rooms.roomid where checkout is not null ";
+                query = "select customer.cid , customer.cname, customer.mobile, customer.nationality, customer.gender, customer.dob, customer.idproof, customer.address, customer.checkin, rooms.roomNo, rooms.roomType, rooms.bed, rooms.price, customer.numDays, customer.totalPrice  from customer inner join rooms on customer.roomid = rooms.roomid where checkout is not null ";
                 getRecord(query);
             }
         }
@@ -42,6 +42,11 @@ namespace KhachSan.All_User_Control
         {
             DataSet ds = fn.getData(query);
             guna2DataGridView1.DataSource = ds.Tables[0];
+        }
+
+        private void UC_CustomerDetails_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

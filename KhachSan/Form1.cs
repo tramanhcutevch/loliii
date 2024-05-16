@@ -12,6 +12,8 @@ namespace KhachSan
 {
     public partial class Form1 : Form
     {
+        function fn = new function();
+        String query;
         public Form1()
         {
             InitializeComponent();
@@ -25,12 +27,14 @@ namespace KhachSan
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(txtUsername.Text == "admin" && txtPassword.Text == "admin")
+            query = "select username, pass from employee where username = '" + txtUsername.Text + "' and pass = '" + txtPassword.Text + "'";
+            DataSet ds = fn.getData(query);
+            if (ds.Tables[0].Rows.Count != 0)
             {
                 labelError.Visible = false;
-                Dashboard ds = new Dashboard();
+                Dashboard dash = new Dashboard();
                 this.Hide();
-                ds.Show();
+                dash.Show();
 
             }
             else
@@ -41,6 +45,11 @@ namespace KhachSan
         }
 
         private void labelError_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

@@ -35,19 +35,28 @@ namespace KhachSan.All_User_Control
                 String type = txtRoomType.Text;
                 String bed = txtBed.Text;
                 Int64 price = Int64.Parse(txtPrice.Text);
-                query = "insert into rooms (roomNo , roomType, bed, price ) values ('" + roomno + "','" + type + "','" + bed + "','" + price + "')";
-                fn.setData(query, "Đã thêm phòng ");
 
+            
+                query = "select count(*) from rooms where roomNo = '" + roomno + "'";
+                DataSet ds = fn.getData(query);
+                int count = int.Parse(ds.Tables[0].Rows[0][0].ToString());
 
-                UC_AddRoom_Load(this, null);
-                clearAll();
-
+                if (count == 0) 
+                {
+                    query = "insert into rooms (roomNo , roomType, bed, price ) values ('" + roomno + "','" + type + "','" + bed + "','" + price + "')";
+                    fn.setData(query, "Đã thêm phòng ");
+                    UC_AddRoom_Load(this, null);
+                    clearAll();
+                }
+                else 
+                {
+                    MessageBox.Show("roomNo đã tồn tại. Xin vui lòng nhập lại", "Cảnh báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
-                MessageBox.Show("Xin vui lòng nhập lại ","warning !", MessageBoxButtons.OK , MessageBoxIcon.Warning);
+                MessageBox.Show("Xin vui lòng nhập lại", "Cảnh báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
         public void clearAll()
         {
@@ -72,6 +81,29 @@ namespace KhachSan.All_User_Control
         private void guna2PictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDeleteRoom_Click(object sender, EventArgs e)
+        {
+            if (txtDeleteRoomNo.Text != "")
+            {
+                String roomno = txtDeleteRoomNo.Text;
+
+                // Xóa tất cả các bản ghi trong bảng 'customer' liên quan đến phòng
+                query = "delete from customer where roomid = (select TOP 1 roomid from rooms where roomNo = '" + roomno + "')";
+                fn.setData(query, "Đã xóa khách hàng liên quan đến phòng.");
+
+                // Xóa phòng
+                query = "delete from rooms where roomNo = '" + roomno + "'";
+                fn.setData(query, "Đã xóa phòng.");
+
+                UC_AddRoom_Load(this, null);
+                clearAll();
+            }
+            else
+            {
+                MessageBox.Show("Xin vui lòng nhập số phòng cần xóa", "Cảnh báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
